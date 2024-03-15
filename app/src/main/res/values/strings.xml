@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">MercadoLibreClone</string>
+    <!-- CREDENCIALES APLICATIVO -->
+    <string name="app_name">Mercado Libre</string>
+    <string name="copyright">Copyright © 2024 MercadoLibreClone</string>
+
+    <!-- MENU -->
+    <string name="nav_drawer_open">Open</string>
+    <string name="nav_drawer_close">Cloe</string>
+
+    <!-- LOGIN -->
+    <string name="title_login">Ingresá tu teléfono, e-mail o usuario y clave</string>
+    <string name="label_email">Teléfono, e-mail o usuario</string>
+    <string name="label_password">Clave</string>
+    <string name="btn_continue">Ingresar</string>
+    <string name="btn_create_account">Crear cuenta</string>
+    <string name="btn_need_help">Necesito ayuda para ingresar</string>
+
+    <!-- MAIN -->
+    <string name="tv_offers">OFERTAS IMPERDIBLES</string>
 </resources>
