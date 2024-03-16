@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
-        <item android:id="@+id/nav_item_one"
-            android:icon="@drawable/arrow_back_icon"
-            android:title="Item 1"/>
+        <item android:id="@+id/nav_item_home"
+            android:icon="@drawable/ic_home"
+            android:title="Inicio"/>
 
-        <item android:id="@+id/nav_item_two"
-            android:icon="@drawable/arrow_back_icon"
-            android:title="Item 2"/>
+        <item android:id="@+id/nav_item_search"
+            android:icon="@drawable/ic_search"
+            android:title="Buscar"/>
 
-        <item android:id="@+id/nav_item_three"
-            android:icon="@drawable/arrow_back_icon"
-            android:title="Item 3"/>
+        <item android:id="@+id/nav_item_my_shopping"
+            android:icon="@drawable/ic_shopping"
+            android:title="Mis compras"/>
+
+        <item android:id="@+id/nav_item_favorites"
+            android:icon="@drawable/ic_favorites"
+            android:title="Favoritos"/>
+
+        <item android:id="@+id/nav_item_offers"
+            android:icon="@drawable/ic_offer"
+            android:title="Ofertas"/>
+
+        <item android:id="@+id/nav_item_history"
+            android:icon="@drawable/ic_history"
+            android:title="Historial"/>
+
+        <item android:id="@+id/nav_item_my_count"
+            android:icon="@drawable/ic_count"
+            android:title="Mi cuenta"/>
     </group>
 
     <item android:title="Title 1">
         <menu>
             <item android:id="@+id/nav_item_six"
-                android:icon="@drawable/arrow_back_icon"
+                android:icon="@drawable/ic_arrow_back"
                 android:title="Item 6"/>
 
             <item android:id="@+id/nav_item_seven"
-                android:icon="@drawable/arrow_back_icon"
+                android:icon="@drawable/ic_arrow_back"
                 android:title="Item 7"/>
         </menu>
     </item>

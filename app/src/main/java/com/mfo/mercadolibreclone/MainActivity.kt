@@ -1,6 +1,7 @@
 package com.mfo.mercadolibreclone
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,8 +14,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.mfo.mercadolibreclone.databinding.ActivityMainBinding
+import com.mfo.mercadolibreclone.databinding.AppBarMainBinding
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var bindingAppBar: AppBarMainBinding
 
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
@@ -22,12 +28,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
 
-        drawer = findViewById(R.id.drawer_layaout)
+        drawer = binding.drawerLayaout
 
         toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close)
         drawer.addDrawerListener(toggle)
@@ -39,14 +46,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-
+        initListeners()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.nav_item_one -> Toast.makeText(this, "Item 1", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_two -> Toast.makeText(this, "Item 2", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_three-> Toast.makeText(this, "Item 3", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_home -> goToHome()
+            R.id.nav_item_search -> goToSearch()
+            R.id.nav_item_my_shopping-> Toast.makeText(this, "Item 3", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_favorites-> Toast.makeText(this, "favorites", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_offers-> Toast.makeText(this, "offers", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_history-> Toast.makeText(this, "history", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_my_count-> Toast.makeText(this, "my count", Toast.LENGTH_SHORT).show()
         }
 
         drawer.closeDrawer(GravityCompat.START)
@@ -68,5 +79,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun initListeners() {
+        binding.include.btnCart.setOnClickListener() {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    fun goToHome() {
+        println("Go to home")
+    }
+
+    fun goToSearch() {
+        println("Go to search")
     }
 }

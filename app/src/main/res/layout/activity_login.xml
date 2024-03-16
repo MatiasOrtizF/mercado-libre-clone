@@ -18,7 +18,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/arrow_back_icon"
+        android:background="@drawable/ic_arrow_back"
         android:layout_marginBottom="20dp"
         />
 
