@@ -1,26 +1,24 @@
-package com.mfo.mercadolibreclone
+package com.mfo.mercadolibreclone.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.Gravity
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.databinding.ActivityMainBinding
-import com.mfo.mercadolibreclone.databinding.AppBarMainBinding
+import com.mfo.mercadolibreclone.ui.category.CategoriesActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var bindingAppBar: AppBarMainBinding
 
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
@@ -31,19 +29,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar_main)
+        val toolbar: Toolbar = binding.include.toolbarMain
         setSupportActionBar(toolbar)
 
         drawer = binding.drawerLayaout
 
-        toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close)
+        toggle = ActionBarDrawerToggle(this, drawer, toolbar,
+            R.string.nav_drawer_open,
+            R.string.nav_drawer_close
+        )
         drawer.addDrawerListener(toggle)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val navigationView: NavigationView = findViewById(R.id.nav_view)
+        val navigationView: NavigationView = binding.navView
         navigationView.setNavigationItemSelectedListener(this)
 
         initListeners()
@@ -53,11 +54,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when(item.itemId) {
             R.id.nav_item_home -> goToHome()
             R.id.nav_item_search -> goToSearch()
-            R.id.nav_item_my_shopping-> Toast.makeText(this, "Item 3", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_favorites-> Toast.makeText(this, "favorites", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_offers-> Toast.makeText(this, "offers", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_history-> Toast.makeText(this, "history", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_my_count-> Toast.makeText(this, "my count", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_my_shopping -> goToMyShopping()
+            R.id.nav_item_favorites -> goToFavorites()
+            R.id.nav_item_offers -> goToOffers()
+            R.id.nav_item_history -> goToHistory()
+            R.id.nav_item_my_count -> goToMyAccount()
+            R.id.nav_item_categories -> goToCategories()
         }
 
         drawer.closeDrawer(GravityCompat.START)
@@ -87,13 +89,62 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(intent)
             finish()
         }
+        binding.include.btnSearch.setOnClickListener() {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
-    fun goToHome() {
-        println("Go to home")
+    private fun goToHome() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
-    fun goToSearch() {
-        println("Go to search")
+    private fun goToSearch() {
+        val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun goToMyShopping() {
+        /*val intent = Intent(this, CartActivity::class.java)
+        startActivity(intent)
+        finish()
+       */
+        println("Go to my shopping")
+    }
+
+    private fun goToFavorites() {
+        val intent = Intent(this, FavoritesActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun goToOffers() {
+        val intent = Intent(this, OffersActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun goToHistory() {
+        /*val intent = Intent(this, CartActivity::class.java)
+        startActivity(intent)
+        finish()
+        */
+        println("Go to history")
+    }
+
+    private fun goToMyAccount() {
+        val intent = Intent(this, MyAccountActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun goToCategories() {
+        val intent = Intent(this, CategoriesActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

@@ -32,9 +32,9 @@
 
     <item android:title="Title 1">
         <menu>
-            <item android:id="@+id/nav_item_six"
+            <item android:id="@+id/nav_item_categories"
                 android:icon="@drawable/ic_arrow_back"
-                android:title="Item 6"/>
+                android:title="Categorias"/>
 
             <item android:id="@+id/nav_item_seven"
                 android:icon="@drawable/ic_arrow_back"

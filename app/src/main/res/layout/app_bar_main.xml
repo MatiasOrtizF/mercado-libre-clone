@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -24,8 +24,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                app:layout_scrollFlags="scroll|enterAlways">
-            </androidx.appcompat.widget.Toolbar>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_scrollFlags="scroll|enterAlways"
+                />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSearch"

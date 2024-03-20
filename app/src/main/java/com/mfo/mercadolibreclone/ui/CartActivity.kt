@@ -1,11 +1,12 @@
-package com.mfo.mercadolibreclone
+package com.mfo.mercadolibreclone.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.mfo.mercadolibreclone.databinding.ActivityCartBinding
-import com.mfo.mercadolibreclone.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CartActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCartBinding
@@ -18,6 +19,11 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
+        binding.btnBack.setOnClickListener() {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         binding.btnDiscoverProducts.setOnClickListener() {
             val intent = Intent(this, OffersActivity::class.java)
             startActivity(intent)

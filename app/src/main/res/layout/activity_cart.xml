@@ -4,40 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CartActivity"
+    tools:context=".ui.CartActivity"
     android:orientation="vertical"
-    android:gravity="center_horizontal | center_vertical"
-    android:paddingHorizontal="10dp"
-    android:paddingVertical="35dp">
+    android:gravity="center">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_shopping"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Empieza un carrrito de compras"
-        android:textColor="@color/black"
-        android:layout_marginBottom="5dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Suma productos y consegui envio gratis."
-        />
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnDiscoverProducts"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Descubrir productos"
-        android:textSize="17sp"
-        android:textAllCaps="false"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/white"
-        android:background="@drawable/bg_btn_login"
-        android:height="45dp"
-        />
+        android:layout_height="50dp"
+        android:background="@color/yellow"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="10dp"
+        >
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            android:background="@android:color/transparent"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carrito de compras"
+            android:textSize="16sp"
+            android:layout_marginStart="15dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingHorizontal="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_shopping"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Empieza un carrrito de compras"
+            android:textColor="@color/black"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Suma productos y consegui envio gratis."
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDiscoverProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descubrir productos"
+            android:textSize="17sp"
+            android:textAllCaps="false"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_btn_login"
+            android:height="45dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

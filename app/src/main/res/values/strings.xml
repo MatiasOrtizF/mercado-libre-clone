@@ -17,4 +17,90 @@
 
     <!-- MAIN -->
     <string name="tv_offers">OFERTAS IMPERDIBLES</string>
+
+    <!-- CATEGORIES -->
+    <string name="tv_vehicles">Vehicles</string>
+    <string name="tv_vehicles_es">Vehículos</string>
+
+    <string name="tv_agro">Agro</string>
+    <string name="tv_agro_es">Agro</string>
+
+    <string name="tv_food_and_beverages">Food and Beverages</string>
+    <string name="tv_food_and_beverages_es">Alimentos y bebidas</string>
+
+    <string name="tv_animals">Animals</string>
+    <string name="tv_animals_es">Animales</string>
+
+    <string name="tv_collections">Collections</string>
+    <string name="tv_collections_es">Colecciones</string>
+
+    <string name="tv_art">Art</string>
+    <string name="tv_art_es">Arte</string>
+
+    <string name="tv_beauty">Beauty</string>
+    <string name="tv_beauty_es">Belleza</string>
+
+    <string name="tv_cameras">Cameras and Accsories</string>
+    <string name="tv_cameras_es">Cámaras y Accesorios</string>
+
+    <string name="tv_cell_phones">Cell Phones</string>
+    <string name="tv_cell_phones_es">Celulares y Teléfonos</string>
+
+    <string name="tv_computers">Computers</string>
+    <string name="tv_computers_es">Computación</string>
+
+    <string name="tv_consoles_and_video_games">Consoles and Video Games</string>
+    <string name="tv_consoles_and_video_games_es">Consolas y Videojuegos</string>
+
+    <string name="tv_construction">Construction</string>
+    <string name="tv_construction_es">Construcción</string>
+
+    <string name="tv_fitness_and_sports">Fitness and Sports</string>
+    <string name="tv_fitness_and_sports_es">Fitness y Deporte</string>
+
+    <string name="tv_appliances">Appliances</string>
+    <string name="tv_appliances_es">Electrodomésticos</string>
+
+    <string name="tv_electronics">Electronics</string>
+    <string name="tv_electronics_es">Electrónica</string>
+
+    <string name="tv_tools">Tools</string>
+    <string name="tv_tools_es">Herramientas</string>
+
+    <string name="tv_home_furniture_and_garden">Home, Furniture, and Garden</string>
+    <string name="tv_home_furniture_and_garden_es">Hogar, Muebles y Jardín</string>
+
+    <string name="tv_real_estate">Real Estate</string>
+    <string name="tv_real_estate_es">Inmuebles</string>
+
+    <string name="tv_music">Music</string>
+    <string name="tv_music_es">Música</string>
+
+    <string name="tv_jewelry_and_watches">Jewelry and Watches</string>
+    <string name="tv_jewelry_and_watches_es">Joyería y Relojes</string>
+
+    <string name="tv_toys_and_games">Toys and Games</string>
+    <string name="tv_toys_and_games_es">Juegos y Juguetes</string>
+
+    <string name="tv_books">Books, Magazines and Comics </string>
+    <string name="tv_books_es">Libros, Revistas y Cómics</string>
+
+    <string name="tv_movies_and_series">Movies and Series</string>
+    <string name="tv_movies_and_series_es">Películas y Series</string>
+
+    <string name="tv_clothing_and_accessories">Clothing and Accessories</string>
+    <string name="tv_clothing_and_accessories_es">Ropa y Accesorios</string>
+
+    <string name="tv_health">Health</string>
+    <string name="tv_health_es">Salud</string>
+
+    <string name="tv_services">Services</string>
+    <string name="tv_services_es">Servicios</string>
+
+    <string name="tv_parties_and_events">Parties and Events</string>
+    <string name="tv_parties_and_events_es">Fiestas y Eventos</string>
+
+    <string name="tv_other_categories">Other Categories</string>
+    <string name="tv_other_categories_es">Otras Categorías</string>
+
 </resources>
