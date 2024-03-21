@@ -4,127 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layaout"
+    android:id="@+id/drawer"
     tools:context=".ui.MainActivity"
     tools:openDrawer="start">
 
-    <!--<androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/yellow"
-        android:padding="8dp">-->
-
-        <!--<androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            android:layout_height="match_parent">
+                
+                <include
+                    android:id="@+id/include"
+                    layout="@layout/app_bar_main"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/burger_menu_icon" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:background="@drawable/bg_et_search"
-                android:gravity="center_vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-                app:layout_constraintStart_toEndOf="@+id/imageButton"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/cart_icon"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+                <fragment
+                    android:id="@+id/fragmentContainerView"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:defaultNavHost="true"
+                    app:navGraph="@navigation/main_graph"
+                    app:layout_constraintTop_toBottomOf="@+id/include"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+                
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             app:headerLayout="@layout/nav_header_main"
             app:menu="@menu/activity_main_drawer"
-            />
-<!--
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:layout_below="@id/include"
-            app:layout_constraintTop_toBottomOf="@id/include"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="8dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvOffers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_offers"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/include"
-                    />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/viewHeladera"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    app:layout_constraintTop_toBottomOf="@id/tvOffers"
-                    app:layout_constraintEnd_toStartOf="@id/viewZapatilla"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hola"/>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/viewZapatilla"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    app:layout_constraintTop_toBottomOf="@id/tvOffers"
-                    app:layout_constraintStart_toEndOf="@id/viewHeladera"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginStart="8dp"
-                    app:cardCornerRadius="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hola"
-                        tools:layout_editor_absoluteY="20dp" />
-
-                </androidx.cardview.widget.CardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
--->
-    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
-
+            android:layout_gravity="start"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

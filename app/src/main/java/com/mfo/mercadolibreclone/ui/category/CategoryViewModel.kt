@@ -16,6 +16,5 @@ class CategoryViewModel @Inject constructor(categoryProvider: CategoryProvider):
 
     init {
         _category.value = categoryProvider.getCategories()
-        print(categoryProvider.getCategories())
     }
 }

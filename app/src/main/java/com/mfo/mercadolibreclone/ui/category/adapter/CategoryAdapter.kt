@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.domain.model.CategoryInfo
 
-class CategoryAdapter(private var categoryList: List<CategoryInfo> = emptyList()): RecyclerView.Adapter<CategoryViewHolder>() {
+class CategoryAdapter(private var categoryList: List<CategoryInfo> = emptyList(), private val onItemSelected:(CategoryInfo) -> Unit ): RecyclerView.Adapter<CategoryViewHolder>() {
 
     fun updateList(list: List<CategoryInfo>) {
         categoryList = list
@@ -24,6 +24,6 @@ class CategoryAdapter(private var categoryList: List<CategoryInfo> = emptyList()
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        holder.bind(categoryList[position])
+        holder.bind(categoryList[position], onItemSelected)
     }
 }

@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
-        <item android:id="@+id/nav_item_home"
+        <item android:id="@+id/id_home_fragment"
             android:icon="@drawable/ic_home"
             android:title="Inicio"/>
 
-        <item android:id="@+id/nav_item_search"
+        <item android:id="@+id/id_search_fragment"
             android:icon="@drawable/ic_search"
             android:title="Buscar"/>
 
-        <item android:id="@+id/nav_item_my_shopping"
+        <item android:id="@+id/id_shopping_fragment"
             android:icon="@drawable/ic_shopping"
             android:title="Mis compras"/>
 
-        <item android:id="@+id/nav_item_favorites"
+        <item android:id="@+id/id_favorites_fragment"
             android:icon="@drawable/ic_favorites"
             android:title="Favoritos"/>
 
-        <item android:id="@+id/nav_item_offers"
+        <item android:id="@+id/id_offers_fragment"
             android:icon="@drawable/ic_offer"
             android:title="Ofertas"/>
 
-        <item android:id="@+id/nav_item_history"
+        <item android:id="@+id/id_history_fragment"
             android:icon="@drawable/ic_history"
             android:title="Historial"/>
 
-        <item android:id="@+id/nav_item_my_count"
+        <item android:id="@+id/id_my_account_fragment"
             android:icon="@drawable/ic_count"
             android:title="Mi cuenta"/>
     </group>
 
     <item android:title="Title 1">
         <menu>
-            <item android:id="@+id/nav_item_categories"
+            <item android:id="@+id/id_category_fragment"
                 android:icon="@drawable/ic_arrow_back"
                 android:title="Categorias"/>
 
