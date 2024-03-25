@@ -15,7 +15,7 @@ class CategoryAdapter(private var categoryList: List<CategoryInfo> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
         )
     }
 

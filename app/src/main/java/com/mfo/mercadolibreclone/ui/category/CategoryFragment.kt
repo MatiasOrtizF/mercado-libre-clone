@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.databinding.FragmentCategoryBinding
@@ -22,7 +23,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CategoryFragment: Fragment() {
 
-    private val categoryViewModel by viewModels<CategoryViewModel>()
+    private val categoryViewModel: CategoryViewModel by viewModels()
     private lateinit var categoryAdapter: CategoryAdapter
 
     private var _binding: FragmentCategoryBinding? = null
@@ -41,8 +42,7 @@ class CategoryFragment: Fragment() {
 
     private fun initList() {
         categoryAdapter = CategoryAdapter(onItemSelected = {
-            Toast.makeText(context, getString(it.name) ,Toast.LENGTH_LONG).show()
-            println(getString(it.name))
+            findNavController().navigate(CategoryFragmentDirections.actionIdCategoryFragmentToIdProductFragment(getString(it.name)))
         })
 
         binding.rvCategory.apply {

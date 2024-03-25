@@ -7,7 +7,7 @@
     android:background="@color/gray"
     android:padding="5dp"
     tools:context=".ui.category.CategoryFragment">
-
+    
     <!--<ImageButton
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"

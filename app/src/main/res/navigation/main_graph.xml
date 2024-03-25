@@ -13,7 +13,11 @@
         android:id="@+id/id_category_fragment"
         android:name="com.mfo.mercadolibreclone.ui.category.CategoryFragment"
         android:label="Category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_id_category_fragment_to_id_product_fragment"
+            app:destination="@id/id_product_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/id_cart_fragment"
         android:name="com.mfo.mercadolibreclone.ui.cart.CartFragment"
@@ -49,4 +53,13 @@
         android:name="com.mfo.mercadolibreclone.ui.myShopping.ShoppingFragment"
         android:label="Shopping"
         tools:layout="@layout/fragment_shopping" />
+    <fragment
+        android:id="@+id/id_product_fragment"
+        android:name="com.mfo.mercadolibreclone.ui.globals.ProductFragment"
+        android:label="Product"
+        tools:layout="@layout/fragment_product" >
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+    </fragment>
 </navigation>
