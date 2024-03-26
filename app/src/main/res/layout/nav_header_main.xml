@@ -51,6 +51,7 @@
 
     <!-- not logged -->
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGoToLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"

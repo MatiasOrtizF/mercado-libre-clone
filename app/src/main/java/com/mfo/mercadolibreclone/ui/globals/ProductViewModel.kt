@@ -2,10 +2,8 @@ package com.mfo.mercadolibreclone.ui.globals
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mfo.mercadolibreclone.data.providers.CategoryProvider
-import com.mfo.mercadolibreclone.domain.model.CategoryInfo
 import com.mfo.mercadolibreclone.domain.model.Product
-import com.mfo.mercadolibreclone.domain.usecase.getAllProductsByCategoryUseCase
+import com.mfo.mercadolibreclone.domain.usecase.GetAllProductsByCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +13,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductViewModel @Inject constructor(private val getProductsByCategoryUseCase: getAllProductsByCategoryUseCase): ViewModel() {
+class ProductViewModel @Inject constructor(private val getProductsByCategoryUseCase: GetAllProductsByCategory): ViewModel() {
 
     private var _product = MutableStateFlow<List<Product>>(emptyList())
     val product: StateFlow<List<Product>> = _product

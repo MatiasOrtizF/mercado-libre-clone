@@ -1,5 +1,6 @@
 package com.mfo.mercadolibreclone.ui.globals
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -54,8 +56,12 @@ class ProductFragment : Fragment() {
     private fun initUIState() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                productViewModel.product.collect {
-                    productAdapter.updateList(it)
+                productViewModel.state.collect {
+                    when(it) {
+                        ProductState.Loading -> loadingState()
+                        is ProductState.Error -> errorState(it.error)
+                        is ProductState.Success -> successSate(it)
+                    }
                 }
             }
         }
@@ -79,5 +85,20 @@ class ProductFragment : Fragment() {
     ): View? {
         _binding = FragmentProductBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    private fun loadingState() {
+        binding.pb.isVisible = true
+    }
+
+    private fun errorState(error: String) {
+        binding.pb.isVisible = false
+        val context = binding.root.context
+        Toast.makeText(context, "Error: $error", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun successSate(state: ProductState.Success) {
+        binding.pb.isVisible = false
+        productAdapter.updateList(state.products)
     }
 }
