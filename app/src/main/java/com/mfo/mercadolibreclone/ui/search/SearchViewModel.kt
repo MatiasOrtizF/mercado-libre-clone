@@ -2,17 +2,14 @@ package com.mfo.mercadolibreclone.ui.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mfo.mercadolibreclone.ui.globals.ProductState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchViewModel @Inject constructor(historyProvider: List<String>): ViewModel() {
+class SearchViewModel @Inject constructor(): ViewModel() {
 
     private var _history = MutableStateFlow<List<String>>(emptyList())
     val history: StateFlow<List<String>> = _history

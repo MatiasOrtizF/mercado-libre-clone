@@ -40,7 +40,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRepository(apiService: MeliCloneApiService): Repository {
-        return RepositoryImpl(apiService)
+    fun provideRepository(meliCloneApiService: MeliCloneApiService): Repository {
+        return RepositoryImpl(meliCloneApiService)
     }
 }

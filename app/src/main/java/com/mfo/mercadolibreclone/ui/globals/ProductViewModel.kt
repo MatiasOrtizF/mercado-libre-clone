@@ -1,9 +1,11 @@
 package com.mfo.mercadolibreclone.ui.globals
 
+import androidx.lifecycle.VIEW_MODEL_STORE_OWNER_KEY
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mfo.mercadolibreclone.domain.model.Product
 import com.mfo.mercadolibreclone.domain.usecase.GetAllProductsByCategory
+import com.mfo.mercadolibreclone.domain.usecase.favorites.PostProductInFavoriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +15,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductViewModel @Inject constructor(private val getProductsByCategoryUseCase: GetAllProductsByCategory): ViewModel() {
+class ProductViewModel @Inject constructor(private val getProductsByCategoryUseCase: GetAllProductsByCategory, private val postProductInFavoriteUseCase: PostProductInFavoriteUseCase): ViewModel() {
 
     private var _product = MutableStateFlow<List<Product>>(emptyList())
     val product: StateFlow<List<Product>> = _product
@@ -32,6 +34,17 @@ class ProductViewModel @Inject constructor(private val getProductsByCategoryUseC
                 } else {
                     _state.value = ProductState.Error("ocurrio un error, por favor intente mas tarde")
                 }
+            } catch (e: Exception) {
+                val errorMessage: String = e.message.toString()
+                _state.value = ProductState.Error(errorMessage)
+            }
+        }
+    }
+
+    fun addProductInFavoriteUseCase(authorization: String, productId: Long) {
+        viewModelScope.launch {
+            try {
+                withContext(Dispatchers.IO) { postProductInFavoriteUseCase(authorization, productId) }
             } catch (e: Exception) {
                 val errorMessage: String = e.message.toString()
                 _state.value = ProductState.Error(errorMessage)

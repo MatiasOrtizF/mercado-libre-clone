@@ -102,7 +102,16 @@
 
     <string name="tv_other_categories">Other Categories</string>
     <string name="tv_other_categories_es">Otras Categorías</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Product Detail -->
+    <string name="btn_question">Question</string>
+    <string name="tv_features">Product features</string>
+    <string name="btn_view_features">View all features</string>
+    <string name="tv_description">Description</string>
+    <string name="tv_info_user">User information</string>
+    <string name="tv_contact_user">User contact</string>
 
 </resources>

@@ -22,6 +22,7 @@ import com.mfo.mercadolibreclone.databinding.FragmentProductBinding
 import com.mfo.mercadolibreclone.ui.category.CategoryFragmentDirections
 import com.mfo.mercadolibreclone.ui.category.adapter.CategoryAdapter
 import com.mfo.mercadolibreclone.ui.globals.adapter.ProductAdapter
+import com.mfo.mercadolibreclone.utils.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -68,11 +69,14 @@ class ProductFragment : Fragment() {
     }
 
     private fun initList() {
-        productAdapter = ProductAdapter(onItemSelected = {
-            println("Item selected")
-            //findNavController().navigate(CategoryFragmentDirections.actionIdCategoryFragmentToIdProductFragment(getString(it.name)))
-        })
-
+        productAdapter = ProductAdapter(
+            onItemSelected = {
+                //findNavController().navigate(CategoryFragmentDirections.actionIdCategoryFragmentToIdProductFragment(getString(it.name)))
+            },
+            onFavoriteButtonClicked = { productId ->
+                addToFavorites(productId)
+            }
+        )
         binding.rvProduct.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = productAdapter
@@ -85,6 +89,12 @@ class ProductFragment : Fragment() {
     ): View? {
         _binding = FragmentProductBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    private fun addToFavorites(productId: Long) {
+        val preferences = PreferenceHelper.defaultPrefs(requireContext())
+        val token: String = preferences.getString("jwt", "").toString()
+        productViewModel.addProductInFavoriteUseCase(token, productId)
     }
 
     private fun loadingState() {

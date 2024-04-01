@@ -2,6 +2,7 @@ package com.mfo.mercadolibreclone.data
 
 import android.util.Log
 import com.mfo.mercadolibreclone.data.network.MeliCloneApiService
+import com.mfo.mercadolibreclone.data.network.response.FavoriteResponse
 import com.mfo.mercadolibreclone.data.network.response.LoginResponse
 import com.mfo.mercadolibreclone.domain.Repository
 import com.mfo.mercadolibreclone.domain.model.LoginRequest
@@ -24,7 +25,7 @@ class RepositoryImpl @Inject constructor(private val apiService: MeliCloneApiSer
                 val errorMessage = when (throwable) {
                     is HttpException -> throwable.response()?.errorBody()?.string()
                     else -> null
-                } ?: "An error ocurred: ${throwable.message}"
+                } ?: "An error occurred: ${throwable.message}"
                 Log.i("mfo", "Error occurred: $errorMessage")
                 throw Exception(errorMessage)
             }
@@ -40,11 +41,44 @@ class RepositoryImpl @Inject constructor(private val apiService: MeliCloneApiSer
                 val errorMessage = when (throwable) {
                     is HttpException -> throwable.response()?.errorBody()?.string()
                     else -> null
-                } ?: "An error ocurred: ${throwable.message}"
+                } ?: "An error occurred: ${throwable.message}"
                 Log.i("mfo", "Error occurred: $errorMessage")
                 throw Exception(errorMessage)
             }
         return null
     }
 
+    //favorites
+    override suspend fun getAllProductsInFavorites(authorization: String): List<FavoriteResponse>? {
+        runCatching {
+            val products = apiService.getFavorites(authorization)
+            products.map {
+                it.toDomain()
+            }
+        }
+            .onSuccess { products -> return products }
+            .onFailure { throwable ->
+                val errorMessage = when (throwable) {
+                    is HttpException -> throwable.response()?.errorBody()?.string()
+                    else -> null
+                } ?: "An error occurred: ${throwable.message}"
+                Log.i("mfo", "Error occurred: $errorMessage")
+                throw Exception(errorMessage)
+            }
+        return null
+    }
+
+    override suspend fun addProductInFavorite(authorization: String, productId: Long): FavoriteResponse? {
+        runCatching { apiService.addFavorite(authorization, productId) }
+            .onSuccess { it.toDomain() }
+            .onFailure { throwable ->
+                val errorMessage = when (throwable) {
+                    is HttpException -> throwable.response()?.errorBody()?.string()
+                    else -> null
+                } ?: "An error occurred: ${throwable.message}"
+                Log.i("mfo", "Error occurred: $errorMessage")
+                throw Exception(errorMessage)
+            }
+        return null
+    }
 }
