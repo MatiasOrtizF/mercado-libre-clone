@@ -1,4 +1,4 @@
-package com.mfo.mercadolibreclone.ui.globals.adapter
+package com.mfo.mercadolibreclone.ui.globals.Products.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

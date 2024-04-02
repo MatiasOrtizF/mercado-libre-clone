@@ -1,12 +1,10 @@
-package com.mfo.mercadolibreclone.ui.globals
+package com.mfo.mercadolibreclone.ui.globals.Products
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -15,13 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.databinding.FragmentProductBinding
-import com.mfo.mercadolibreclone.ui.category.CategoryFragmentDirections
-import com.mfo.mercadolibreclone.ui.category.adapter.CategoryAdapter
-import com.mfo.mercadolibreclone.ui.globals.adapter.ProductAdapter
+import com.mfo.mercadolibreclone.ui.globals.Products.adapter.ProductAdapter
 import com.mfo.mercadolibreclone.utils.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -71,7 +65,7 @@ class ProductFragment : Fragment() {
     private fun initList() {
         productAdapter = ProductAdapter(
             onItemSelected = {
-                //findNavController().navigate(CategoryFragmentDirections.actionIdCategoryFragmentToIdProductFragment(getString(it.name)))
+                findNavController().navigate(ProductFragmentDirections.actionIdProductFragmentToProductDetailFragment(it.id, it.subCategory))
             },
             onFavoriteButtonClicked = { productId ->
                 addToFavorites(productId)

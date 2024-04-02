@@ -3,6 +3,7 @@ package com.mfo.mercadolibreclone.domain.model
 data class Product(
     val id: Long,
     val category: String,
+    val subCategory: String,
     val title: String,
     val description: String,
     val price: Double,
@@ -13,6 +14,6 @@ data class Product(
 ) {
 
     fun toDomain(): Product {
-        return Product(id, category, title, description, price, discountPercentage, rating, stock, image )
+        return Product(id, category, subCategory, title, description, price, discountPercentage, rating, stock, image )
     }
 }

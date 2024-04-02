@@ -1,4 +1,4 @@
-package com.mfo.mercadolibreclone.ui.globals
+package com.mfo.mercadolibreclone.ui.globals.Products
 
 import com.mfo.mercadolibreclone.domain.model.Product
 

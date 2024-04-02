@@ -59,11 +59,25 @@
         tools:layout="@layout/fragment_shopping" />
     <fragment
         android:id="@+id/id_product_fragment"
-        android:name="com.mfo.mercadolibreclone.ui.globals.ProductFragment"
+        android:name="com.mfo.mercadolibreclone.ui.globals.Products.ProductFragment"
         android:label="Product"
         tools:layout="@layout/fragment_product" >
         <argument
             android:name="categoryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_id_product_fragment_to_productDetailFragment"
+            app:destination="@id/id_product_detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/id_product_detail_fragment"
+        android:name="com.mfo.mercadolibreclone.ui.globals.ProductDetail.ProductDetailFragment"
+        android:label="ProductDetail" >
+        <argument
+            android:name="productId"
+            app:argType="long" />
+        <argument
+            android:name="subCategoryName"
             app:argType="string" />
     </fragment>
 </navigation>

@@ -107,11 +107,22 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Product Detail -->
+    <string name="iv_product_description">Image product</string>
     <string name="btn_question">Question</string>
     <string name="tv_features">Product features</string>
+    <string name="ic_door_description">Icon door</string>
+    <string name="ic_engine_description">Icon engine</string>
+    <string name="ic_fuel_description">Icon fuel</string>
+    <string name="ic_transmission_description">Icon transmission</string>
     <string name="btn_view_features">View all features</string>
     <string name="tv_description">Description</string>
     <string name="tv_info_user">User information</string>
     <string name="tv_contact_user">User contact</string>
+    <string name="tv_currency_price">U$S %.2f</string>
+    <string name="tv_feature_door">Puertas:&#32;</string>
+    <string name="tv_feature_motor">Motor:&#32;</string>
+    <string name="tv_feature_fuel">Tipo de combustible:&#32;</string>
+    <string name="tv_feature_transmission">Tipo de combustible:&#32;</string>
+    <string name="tv_username">%s %s</string>
 
 </resources>

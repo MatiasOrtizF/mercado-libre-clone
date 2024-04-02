@@ -2,6 +2,7 @@ package com.mfo.mercadolibreclone.data.network
 
 import com.mfo.mercadolibreclone.data.network.response.FavoriteResponse
 import com.mfo.mercadolibreclone.data.network.response.LoginResponse
+import com.mfo.mercadolibreclone.domain.model.Car
 import com.mfo.mercadolibreclone.domain.model.LoginRequest
 import com.mfo.mercadolibreclone.domain.model.Product
 import retrofit2.http.Body
@@ -13,8 +14,15 @@ import retrofit2.http.Path
 
 interface MeliCloneApiService {
 
+    // products
     @GET("product/category/{categoryName}")
     suspend fun getProductByCategory(@Path ("categoryName") categoryName: String): List<Product>
+
+    @GET("product/{category}/{id}")
+    suspend fun getProduct(
+        @Path ("category") category: String,
+        @Path ("id") id: Long
+    ): Car
 
     @POST("login")
     suspend fun authenticationUser(@Body loginRequest: LoginRequest): LoginResponse

@@ -1,6 +1,5 @@
-package com.mfo.mercadolibreclone.ui.globals
+package com.mfo.mercadolibreclone.ui.globals.Products
 
-import androidx.lifecycle.VIEW_MODEL_STORE_OWNER_KEY
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mfo.mercadolibreclone.domain.model.Product
@@ -32,7 +31,8 @@ class ProductViewModel @Inject constructor(private val getProductsByCategoryUseC
                     _product.value = result
                     _state.value = ProductState.Success(result.toMutableList())
                 } else {
-                    _state.value = ProductState.Error("ocurrio un error, por favor intente mas tarde")
+                    _state.value =
+                        ProductState.Error("ocurrio un error, por favor intente mas tarde")
                 }
             } catch (e: Exception) {
                 val errorMessage: String = e.message.toString()
