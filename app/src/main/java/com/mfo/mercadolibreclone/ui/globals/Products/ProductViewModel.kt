@@ -32,7 +32,7 @@ class ProductViewModel @Inject constructor(private val getProductsByCategoryUseC
                     _state.value = ProductState.Success(result.toMutableList())
                 } else {
                     _state.value =
-                        ProductState.Error("ocurrio un error, por favor intente mas tarde")
+                        ProductState.Error("Error occurred, Please try again later.")
                 }
             } catch (e: Exception) {
                 val errorMessage: String = e.message.toString()

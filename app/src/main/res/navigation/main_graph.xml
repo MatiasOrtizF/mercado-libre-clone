@@ -27,7 +27,20 @@
         android:id="@+id/id_favorites_fragment"
         android:name="com.mfo.mercadolibreclone.ui.favorites.FavoritesFragment"
         android:label="Favorities"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_id_favorites_fragment_to_id_product_detail_fragment"
+            app:destination="@id/id_product_detail_fragment" />
+        <action
+            android:id="@+id/action_id_favorites_fragment_to_id_home_fragment"
+            app:destination="@id/id_home_fragment" />
+        <action
+            android:id="@+id/action_id_favorites_fragment_to_id_cart_fragment"
+            app:destination="@id/id_cart_fragment" />
+        <action
+            android:id="@+id/action_id_favorites_fragment_to_id_search_fragment"
+            app:destination="@id/id_search_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/id_my_account_fragment"
         android:name="com.mfo.mercadolibreclone.ui.myAccount.MyAccountFragment"

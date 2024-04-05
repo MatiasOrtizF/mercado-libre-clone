@@ -125,4 +125,10 @@
     <string name="tv_feature_transmission">Tipo de combustible:&#32;</string>
     <string name="tv_username">%s %s</string>
 
+    <!-- Favorites -->
+    <string name="ic_fav_description"> Icon favorite </string>
+    <string name="tv_fav_empty"> Aún no tienes productos favoritos </string>
+    <string name="tv_add_fav"> Agrégalos haciendo clic en el corazón de la página de producto </string>
+    <string name="btn_delete"> Eliminar </string>
+
 </resources>
