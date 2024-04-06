@@ -3,6 +3,7 @@ package com.mfo.mercadolibreclone.ui.favorites
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mfo.mercadolibreclone.data.network.response.FavoriteResponse
+import com.mfo.mercadolibreclone.domain.usecase.favorites.DeleteProductInFavoritesUseCase
 import com.mfo.mercadolibreclone.domain.usecase.favorites.GetAllProductsInFavoritesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +14,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class FavoritesViewModel @Inject constructor(private val getAllProductsInFavoritesUseCase: GetAllProductsInFavoritesUseCase): ViewModel() {
+class FavoritesViewModel @Inject constructor(private val getAllProductsInFavoritesUseCase: GetAllProductsInFavoritesUseCase, private val deleteProductInFavoritesUseCase: DeleteProductInFavoritesUseCase): ViewModel() {
     private var _product = MutableStateFlow<List<FavoriteResponse>>(emptyList())
     val product: StateFlow<List<FavoriteResponse>> = _product
 
@@ -36,6 +37,20 @@ class FavoritesViewModel @Inject constructor(private val getAllProductsInFavorit
                 val errorMessage: String = e.message.toString()
                 _state.value = FavoriteState.Error(errorMessage)
             }
+        }
+    }
+
+    suspend fun deleteProductInFavorite(authorization: String, id: Long): Boolean {
+        return try {
+            _state.value = FavoriteState.Loading
+            withContext(Dispatchers.IO) {
+                deleteProductInFavoritesUseCase(authorization, id)
+                true
+            }
+        } catch (e: Exception) {
+            val errorMessage: String = e.message.toString()
+            _state.value = FavoriteState.Error(errorMessage)
+            false
         }
     }
 

@@ -6,10 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.data.network.response.FavoriteResponse
 
-class FavoriteAdapter(private var productsList: List<FavoriteResponse> = emptyList(), private val onItemSelected:(FavoriteResponse) -> Unit, private val onFavoriteDeleteButtonClicked:(Long) -> Unit): RecyclerView.Adapter<FavoriteViewHolder>() {
-    fun updateList(list: List<FavoriteResponse>) {
+class FavoriteAdapter(private var productsList: MutableList<FavoriteResponse> = mutableListOf(), private val onItemSelected:(FavoriteResponse) -> Unit, private val onFavoriteDeleteButtonClicked:(Long, Int) -> Unit): RecyclerView.Adapter<FavoriteViewHolder>() {
+    fun updateList(list: MutableList<FavoriteResponse>) {
         productsList = list
         notifyDataSetChanged()
+    }
+
+    fun onDeleteItem(position: Int) {
+        productsList.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {

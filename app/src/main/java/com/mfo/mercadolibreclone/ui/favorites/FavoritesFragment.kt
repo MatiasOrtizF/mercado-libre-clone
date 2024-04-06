@@ -75,8 +75,8 @@ class FavoritesFragment : Fragment() {
             onItemSelected = {
                 findNavController().navigate(FavoritesFragmentDirections.actionIdFavoritesFragmentToIdProductDetailFragment(it.product.id, it.product.subCategory))
             },
-            onFavoriteDeleteButtonClicked = { id ->
-                deleteToFavorites(id)
+            onFavoriteDeleteButtonClicked = { id, position ->
+                deleteToFavorites(id, position)
             }
         )
         binding.rvFavorite.apply {
@@ -85,8 +85,15 @@ class FavoritesFragment : Fragment() {
         }
     }
 
-    private fun deleteToFavorites(id: Long) {
-        println("Delete fav this id: $id")
+    private fun deleteToFavorites(id: Long, position: Int) {
+        val preferences = PreferenceHelper.defaultPrefs(requireContext())
+        val token: String = preferences.getString("jwt", "").toString()
+        lifecycleScope.launch {
+            val isDelete = favoritesViewModel.deleteProductInFavorite(token, id)
+            if (isDelete) {
+              favoriteAdapter.onDeleteItem(position)
+          }
+        }
     }
 
     private fun loadingState() {

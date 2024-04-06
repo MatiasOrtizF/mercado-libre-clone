@@ -9,14 +9,14 @@ import com.mfo.mercadolibreclone.databinding.ItemFavoriteBinding
 class FavoriteViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private val binding = ItemFavoriteBinding.bind(view)
 
-    fun bind(favorite: FavoriteResponse, onItemSelected: (FavoriteResponse) -> Unit, onFavoriteDeleteButtonClicked: (Long) -> Unit) {
+    fun bind(favorite: FavoriteResponse, onItemSelected: (FavoriteResponse) -> Unit, onFavoriteDeleteButtonClicked: (Long, Int) -> Unit) {
         val context=  binding.tvTitle.context
         Glide.with(context).load(favorite.product.image).into(binding.ivProduct)
         binding.tvTitle.text = favorite.product.title
         binding.tvPrice.text = "$${favorite.product.price}"
         //binding.tvAgeKm.text = favorite.product.description
 
-        binding.btnDeleteFav.setOnClickListener { onFavoriteDeleteButtonClicked(favorite.id) }
+        binding.btnDeleteFav.setOnClickListener { onFavoriteDeleteButtonClicked(favorite.id, adapterPosition) }
 
         binding.parent.setOnClickListener { onItemSelected(favorite) }
     }

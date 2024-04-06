@@ -11,5 +11,6 @@ interface Repository {
     suspend fun authenticationUser(loginRequest: LoginRequest): LoginResponse?
     suspend fun getAllProductsInFavorites(authorization: String): List<FavoriteResponse>?
     suspend fun addProductInFavorite(authorization: String, productId: Long): FavoriteResponse?
+    suspend fun deleteProductInFavorite(authorization: String, id: Long): Boolean
     suspend fun getProduct(category: String, id: Long): Car?
 }

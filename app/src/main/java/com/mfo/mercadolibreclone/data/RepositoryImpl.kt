@@ -96,4 +96,23 @@ class RepositoryImpl @Inject constructor(private val apiService: MeliCloneApiSer
             }
         return null
     }
+
+    override suspend fun deleteProductInFavorite(authorization: String, id: Long): Boolean {
+        return runCatching {
+            apiService.deleteFavorite(authorization, id)
+        }.fold(
+            onSuccess = {
+                true
+            },
+            onFailure = { throwable ->
+                val errorMessage = when (throwable) {
+                    is HttpException -> throwable.response()?.errorBody()?.string()
+                    else -> null
+                } ?: "An error occurred: ${throwable.message}"
+                Log.i("mfo", "Error occurred: $errorMessage")
+                throw Exception(errorMessage)
+            }
+        )
+    }
+
 }
