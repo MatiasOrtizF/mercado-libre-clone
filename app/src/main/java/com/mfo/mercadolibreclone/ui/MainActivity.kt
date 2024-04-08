@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
@@ -78,6 +79,9 @@ class MainActivity : AppCompatActivity(){
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+        binding.include.btnCart.setOnClickListener {
+            navController.navigate(R.id.id_cart_fragment)
         }
     }
 }

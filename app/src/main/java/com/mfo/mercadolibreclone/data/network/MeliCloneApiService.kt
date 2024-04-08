@@ -1,5 +1,6 @@
 package com.mfo.mercadolibreclone.data.network
 
+import com.mfo.mercadolibreclone.data.network.response.CartResponse
 import com.mfo.mercadolibreclone.data.network.response.FavoriteResponse
 import com.mfo.mercadolibreclone.data.network.response.LoginResponse
 import com.mfo.mercadolibreclone.domain.model.Car
@@ -35,11 +36,15 @@ interface MeliCloneApiService {
     ): FavoriteResponse
 
     @GET("favorite")
-    suspend fun getFavorites( @Header ("Authorization") authorization: String ): List<FavoriteResponse>
+    suspend fun getFavorites(@Header ("Authorization") authorization: String): List<FavoriteResponse>
 
     @DELETE("favorite/{id}")
     suspend fun deleteFavorite(
         @Header ("Authorization") authorization: String,
         @Path ("id") favoriteProductId: Long
     ): Boolean // change this
+
+    //cart
+    @GET("cart")
+    suspend fun getCart(@Header ("Authorization") authorization: String): List<CartResponse>
 }

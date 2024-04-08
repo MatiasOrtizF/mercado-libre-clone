@@ -32,11 +32,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutCartEmpty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:paddingHorizontal="10dp">
+        android:paddingHorizontal="10dp"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -68,5 +70,10 @@
             android:height="45dp" />
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
