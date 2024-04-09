@@ -83,5 +83,8 @@ class MainActivity : AppCompatActivity(){
         binding.include.btnCart.setOnClickListener {
             navController.navigate(R.id.id_cart_fragment)
         }
+        binding.include.btnSearch.setOnClickListener {
+            navController.navigate(R.id.id_search_fragment)
+        }
     }
 }

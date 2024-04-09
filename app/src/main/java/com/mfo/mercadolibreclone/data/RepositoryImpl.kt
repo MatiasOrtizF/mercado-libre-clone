@@ -48,6 +48,25 @@ class RepositoryImpl @Inject constructor(private val apiService: MeliCloneApiSer
         return null
     }
 
+    override suspend fun searchProductByName(word: String): List<Product>? {
+        runCatching {
+            val products = apiService.searchProductByName(word)
+            products.map {
+                it.toDomain()
+            }
+        }
+            .onSuccess { products -> return products }
+            .onFailure { throwable ->
+                val errorMessage = when (throwable) {
+                    is HttpException -> throwable.response()?.errorBody()?.string()
+                    else -> null
+                } ?: "An error occurred: ${throwable.message}"
+                Log.i("mfo", "Error occurred: $errorMessage")
+                throw Exception(errorMessage)
+            }
+        return null
+    }
+
     // users
 
     override suspend fun authenticationUser(loginRequest: LoginRequest): LoginResponse? {

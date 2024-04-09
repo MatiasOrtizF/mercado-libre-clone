@@ -50,7 +50,7 @@ class CartFragment : Fragment() {
 
     private fun initListeners() {
         binding.btnBack.setOnClickListener {
-            findNavController().navigate(FavoritesFragmentDirections.actionIdFavoritesFragmentToIdHomeFragment())
+            findNavController().navigate(CartFragmentDirections.actionIdCartFragmentToIdHomeFragment())
         }
         /*binding.btnSearch.setOnClickListener {
             findNavController().navigate(FavoritesFragmentDirections.actionIdFavoritesFragmentToIdSearchFragment())

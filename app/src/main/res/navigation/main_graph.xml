@@ -22,7 +22,11 @@
         android:id="@+id/id_cart_fragment"
         android:name="com.mfo.mercadolibreclone.ui.cart.CartFragment"
         android:label="Cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_id_cart_fragment_to_id_home_fragment"
+            app:destination="@id/id_home_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/id_favorites_fragment"
         android:name="com.mfo.mercadolibreclone.ui.favorites.FavoritesFragment"
@@ -59,12 +63,13 @@
         <action
             android:id="@+id/action_id_search_fragment_to_id_product_fragment"
             app:destination="@id/id_product_fragment" />
+        <action
+            android:id="@+id/action_id_search_fragment_to_id_home_fragment"
+            app:destination="@id/id_home_fragment" />
+        <action
+            android:id="@+id/action_id_search_fragment_to_searchDetailFragment"
+            app:destination="@id/searchDetailFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/id_history_fragment"
-        android:name="com.mfo.mercadolibreclone.ui.history.HistoryFragment"
-        android:label="History"
-        tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/id_shopping_fragment"
         android:name="com.mfo.mercadolibreclone.ui.myShopping.ShoppingFragment"
@@ -91,6 +96,17 @@
             app:argType="long" />
         <argument
             android:name="subCategoryName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchDetailFragment"
+        android:name="com.mfo.mercadolibreclone.ui.searchDetail.SearchDetailFragment"
+        android:label="SearchDetailFragment" >
+        <action
+            android:id="@+id/action_searchDetailFragment_to_id_product_detail_fragment"
+            app:destination="@id/id_product_detail_fragment" />
+        <argument
+            android:name="word"
             app:argType="string" />
     </fragment>
 </navigation>

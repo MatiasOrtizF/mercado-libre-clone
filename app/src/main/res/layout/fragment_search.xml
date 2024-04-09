@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.search.SearchFragment"
-    android:orientation="vertical"
-    android:paddingHorizontal="10dp">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <ImageButton
             android:id="@+id/btnBack"
@@ -17,20 +18,50 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_back"
             android:background="@android:color/transparent"
-            android:layout_gravity="center_vertical"
-            />
+            android:contentDescription="@string/btn_arrow_back_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/etProduct"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:backgroundTint="@android:color/transparent"/>
-    </LinearLayout>
+            android:id="@+id/etSearchProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:background="@android:color/transparent"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:hint="@string/hint_search"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnDeleteSearch"
+            app:layout_constraintStart_toEndOf="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnDeleteSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:src="@drawable/ic_cross"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/btn_cross_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHistorySearch"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="10dp"/>
 
 </LinearLayout>

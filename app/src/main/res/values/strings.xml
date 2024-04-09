@@ -3,6 +3,10 @@
     <string name="app_name">Mercado Libre</string>
     <string name="copyright">Copyright © 2024 MercadoLibreClone</string>
 
+    <!-- GLOBALS -->
+    <string name="btn_arrow_back_description"> Icon arrow back </string>
+    <string name="btn_cross_description"> Icon cross </string>
+
     <!-- MENU -->
     <string name="nav_drawer_open">Open</string>
     <string name="nav_drawer_close">Cloe</string>
@@ -130,5 +134,8 @@
     <string name="tv_fav_empty"> Aún no tienes productos favoritos </string>
     <string name="tv_add_fav"> Agrégalos haciendo clic en el corazón de la página de producto </string>
     <string name="btn_delete"> Eliminar </string>
+
+    <!-- Search -->
+    <string name="hint_search"> Buscar en Mercado Libre Clone </string>
 
 </resources>

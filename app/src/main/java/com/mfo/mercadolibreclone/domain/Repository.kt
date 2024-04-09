@@ -11,6 +11,7 @@ interface Repository {
     //products
     suspend fun getProduct(category: String, id: Long): Car?
     suspend fun getAllByCategory(category: String): List<Product>?
+    suspend fun searchProductByName(word: String): List<Product>?
 
     //login
     suspend fun authenticationUser(loginRequest: LoginRequest): LoginResponse?
