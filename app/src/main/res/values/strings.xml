@@ -10,6 +10,8 @@
     <!-- MENU -->
     <string name="nav_drawer_open">Open</string>
     <string name="nav_drawer_close">Cloe</string>
+    <string name="tv_enter_your_account">Ingresa a tu cuenta</string>
+    <string name="tv_details">Podrás ver detalles de envío y personalizar tu experiencia.</string>
 
     <!-- LOGIN -->
     <string name="title_login">Ingresá tu teléfono, e-mail o usuario y clave</string>
@@ -137,5 +139,23 @@
 
     <!-- Search -->
     <string name="hint_search"> Buscar en Mercado Libre Clone </string>
-
+    
+    <!-- My Account -->
+    <string name="btn_sell"> Vender </string>
+    <string name="tv_shopping"> Compras </string>
+    <string name="ic_description_bag"> Icon bag </string>
+    <string name="tv_my_shopping"> Mis Compras </string>
+    <string name="ic_description_star"> Icon star </string>
+    <string name="tv_my_opinions"> Mis Opiniones </string>
+    <string name="tv_sale"> Ventas </string>
+    <string name="ic_description_post"> Icon post </string>
+    <string name="tv_post"> Publicaciones </string>
+    <string name="ic_description_shop"> Icon shop </string>
+    <string name="tv_configuration"> Configuración </string>
+    <string name="img_description_default_user"> Icon default user </string>
+    <string name="tv_my_profile"> Mi perfil </string>
+    <string name="ic_description_config"> Icon config </string>
+    <string name="tv_settings"> Ajustes </string>
+    <string name="tv_enter_mlc">Ingresar a Mercado Libre Clone</string>
+    <string name="ic_description_on_off"> Icon on/off </string>
 </resources>

@@ -5,10 +5,12 @@ import com.mfo.mercadolibreclone.data.network.MeliCloneApiService
 import com.mfo.mercadolibreclone.data.network.response.CartResponse
 import com.mfo.mercadolibreclone.data.network.response.FavoriteResponse
 import com.mfo.mercadolibreclone.data.network.response.LoginResponse
+import com.mfo.mercadolibreclone.data.network.response.UserResponse
 import com.mfo.mercadolibreclone.domain.Repository
 import com.mfo.mercadolibreclone.domain.model.Car
 import com.mfo.mercadolibreclone.domain.model.LoginRequest
 import com.mfo.mercadolibreclone.domain.model.Product
+import com.mfo.mercadolibreclone.domain.model.User
 import retrofit2.HttpException
 import javax.inject.Inject
 
@@ -155,4 +157,18 @@ class RepositoryImpl @Inject constructor(private val apiService: MeliCloneApiSer
         return null
     }
 
+    //user
+    override suspend fun getUser(token: String): UserResponse? {
+        runCatching { apiService.getUser(token)}
+            .onSuccess { return it.toDomain() }
+            .onFailure { throwable ->
+                val errorMessage = when (throwable) {
+                    is HttpException -> throwable.response()?.errorBody()?.string()
+                    else -> null
+                } ?: "An error occurred: ${throwable.message}"
+                Log.i("mfo", "Error occurred: $errorMessage")
+                throw Exception(errorMessage)
+            }
+        return null
+    }
 }

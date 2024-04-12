@@ -3,9 +3,11 @@ package com.mfo.mercadolibreclone.data.network
 import com.mfo.mercadolibreclone.data.network.response.CartResponse
 import com.mfo.mercadolibreclone.data.network.response.FavoriteResponse
 import com.mfo.mercadolibreclone.data.network.response.LoginResponse
+import com.mfo.mercadolibreclone.data.network.response.UserResponse
 import com.mfo.mercadolibreclone.domain.model.Car
 import com.mfo.mercadolibreclone.domain.model.LoginRequest
 import com.mfo.mercadolibreclone.domain.model.Product
+import com.mfo.mercadolibreclone.domain.model.User
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -52,4 +54,8 @@ interface MeliCloneApiService {
     //cart
     @GET("cart")
     suspend fun getCart(@Header ("Authorization") authorization: String): List<CartResponse>
+
+    //user
+    @GET("user")
+    suspend fun getUser(@Query ("token") token: String): UserResponse
 }

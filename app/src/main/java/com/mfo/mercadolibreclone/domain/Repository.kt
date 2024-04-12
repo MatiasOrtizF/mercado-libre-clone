@@ -3,9 +3,11 @@ package com.mfo.mercadolibreclone.domain
 import com.mfo.mercadolibreclone.data.network.response.CartResponse
 import com.mfo.mercadolibreclone.data.network.response.FavoriteResponse
 import com.mfo.mercadolibreclone.data.network.response.LoginResponse
+import com.mfo.mercadolibreclone.data.network.response.UserResponse
 import com.mfo.mercadolibreclone.domain.model.Car
 import com.mfo.mercadolibreclone.domain.model.LoginRequest
 import com.mfo.mercadolibreclone.domain.model.Product
+import com.mfo.mercadolibreclone.domain.model.User
 
 interface Repository {
     //products
@@ -23,4 +25,7 @@ interface Repository {
 
     //cart
     suspend fun getAllProductsInCart(authorization: String): List<CartResponse>?
+
+    //user
+    suspend fun getUser(token: String): UserResponse?
 }
