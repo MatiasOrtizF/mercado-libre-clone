@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -17,6 +18,7 @@ import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.databinding.FragmentCartBinding
 import com.mfo.mercadolibreclone.databinding.FragmentCategoryBinding
 import com.mfo.mercadolibreclone.ui.cart.adapter.CartAdapter
+import com.mfo.mercadolibreclone.ui.cart.modal.ModalDialogFragment
 import com.mfo.mercadolibreclone.ui.favorites.FavoriteState
 import com.mfo.mercadolibreclone.ui.favorites.FavoritesFragmentDirections
 import com.mfo.mercadolibreclone.ui.favorites.FavoritesViewModel
@@ -38,7 +40,7 @@ class CartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val preferences = PreferenceHelper.defaultPrefs(requireContext())
         val token: String = preferences.getString("jwt", "").toString()
-        cartViewModel.getAllProductsInFavorites(token)
+        cartViewModel.getAllProductsInCart(token)
         initUI()
     }
 
@@ -117,7 +119,17 @@ class CartFragment : Fragment() {
         } else {
             binding.layoutCartEmpty.isVisible = false
             cartAdapter.updateList(state.products)
+            binding.tvTotalProducts.text = "Products(${state.})"
+            openModal()
         }
+    }
+
+    private fun openModal() {
+        /*val quantity = 3
+        val totalPrice = 3
+        val dialog = ModalDialogFragment.newInstance(quantity, totalPrice)
+
+        dialog.show(requireFragmentManager(), "buy_dialog")*/
     }
 
     override fun onCreateView(

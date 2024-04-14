@@ -6,12 +6,23 @@
     <!-- GLOBALS -->
     <string name="btn_arrow_back_description"> Icon arrow back </string>
     <string name="btn_cross_description"> Icon cross </string>
+    <string name="btn_delete"> Eliminar </string>
+    <string name="btn_save"> Guardar </string>
 
     <!-- MENU -->
     <string name="nav_drawer_open">Open</string>
     <string name="nav_drawer_close">Cloe</string>
     <string name="tv_enter_your_account">Ingresa a tu cuenta</string>
     <string name="tv_details">Podrás ver detalles de envío y personalizar tu experiencia.</string>
+    <string name="title_nav_home">Inicio</string>
+    <string name="title_nav_search">Buscar</string>
+    <string name="title_nav_my_shopping">Mis compras</string>
+    <string name="title_nav_favorites">Favoritos</string>
+    <string name="title_nav_offers">Ofertas</string>
+    <string name="title_nav_history">Historial</string>
+    <string name="title_nav_my_account">Mi cuenta</string>
+    <string name="title_nav_categories">Categorias</string>
+
 
     <!-- LOGIN -->
     <string name="title_login">Ingresá tu teléfono, e-mail o usuario y clave</string>
@@ -135,7 +146,6 @@
     <string name="ic_fav_description"> Icon favorite </string>
     <string name="tv_fav_empty"> Aún no tienes productos favoritos </string>
     <string name="tv_add_fav"> Agrégalos haciendo clic en el corazón de la página de producto </string>
-    <string name="btn_delete"> Eliminar </string>
 
     <!-- Search -->
     <string name="hint_search"> Buscar en Mercado Libre Clone </string>
@@ -158,4 +168,12 @@
     <string name="tv_settings"> Ajustes </string>
     <string name="tv_enter_mlc">Ingresar a Mercado Libre Clone</string>
     <string name="ic_description_on_off"> Icon on/off </string>
+
+    <!-- Cart -->
+    <string name="title_header_cart"> Carrito de compras </string>
+    <string name="ic_description_shopping"> Icon shopping </string>
+    <string name="tv_start_cart"> Empieza un carrrito de compras </string>
+    <string name="tv_add_items"> Suma productos y consegui envio gratis. </string>
+    <string name="btn_discover_products"> Descubrir productos </string>
+
 </resources>

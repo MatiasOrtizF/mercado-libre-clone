@@ -21,7 +21,7 @@ class CartViewModel @Inject constructor(private val getAllProductsInCartUseCase:
     private var _state = MutableStateFlow<CartState>(CartState.Loading)
     val state: StateFlow<CartState> = _state
 
-    fun getAllProductsInFavorites(authorization: String) {
+    fun getAllProductsInCart(authorization: String) {
         viewModelScope.launch {
             _state.value = CartState.Loading
             try {
@@ -30,8 +30,7 @@ class CartViewModel @Inject constructor(private val getAllProductsInCartUseCase:
                     _product.value = result
                     _state.value = CartState.Success(result.toMutableList())
                 } else {
-                    _state.value =
-                        CartState.Error("Error occurred, Please try again later.")
+                    _state.value = CartState.Error("Error occurred, Please try again later.")
                 }
             } catch (e: Exception) {
                 val errorMessage: String = e.message.toString()

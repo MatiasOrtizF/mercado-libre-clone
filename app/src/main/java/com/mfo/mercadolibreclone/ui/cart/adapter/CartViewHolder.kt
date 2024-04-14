@@ -13,7 +13,8 @@ class CartViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val context = binding.tvTitle.context
         Glide.with(context).load(cart.product.image).into(binding.ivProduct)
         binding.tvTitle.text = cart.product.title
-        binding.tvPrice.text = "$${cart.product.price}"
+        binding.tvQuantity.text = cart.quantity.toString()
+        binding.tvPrice.text = "$ ${cart.product.price}"
         //binding.tvAgeKm.text = favorite.product.description
 
         binding.parent.setOnClickListener { onItemSelected(cart) }

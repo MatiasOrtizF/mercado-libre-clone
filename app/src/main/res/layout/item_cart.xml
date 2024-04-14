@@ -1,51 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
-
-    <ImageView
-        android:id="@+id/ivProduct"
-        android:layout_width="150sp"
-        android:layout_height="150sp"
-        android:paddingVertical="10dp"
-        android:src="@drawable/ic_shopping"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"/>
+    android:background="@color/white"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dp">
+        android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tvTitle"
+        <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="55sp"
+            android:layout_height="55sp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_example_default" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minLines="2"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:orientation="vertical"
+            android:layout_marginStart="15dp" >
 
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="19sp"
-            android:layout_marginVertical="10dp"/>
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hola"
+                android:textSize="17sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnDeleteFav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_delete"
-            android:textColor="@color/blue"
-            android:background="@drawable/bg_btn_transparent"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/blue"
+                    android:text="@string/btn_delete"
+                    android:gravity="start|center_vertical"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/blue"
+                    android:text="@string/btn_save"
+                    android:gravity="start|center_vertical"/>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:text="120"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
