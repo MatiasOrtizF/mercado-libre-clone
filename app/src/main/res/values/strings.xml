@@ -175,5 +175,9 @@
     <string name="tv_start_cart"> Empieza un carrrito de compras </string>
     <string name="tv_add_items"> Suma productos y consegui envio gratis. </string>
     <string name="btn_discover_products"> Descubrir productos </string>
+    <string name="tv_shipment"> Envío </string>
+    <string name="tv_shipments"> Envíos </string>
+    <string name="tv_total"> Total </string>
+    <string name="btn_continue_shopping"> Continuar compra </string>
 
 </resources>

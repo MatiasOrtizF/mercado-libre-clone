@@ -60,6 +60,9 @@ class CartFragment : Fragment() {
         binding.btnCart.setOnClickListener {
             findNavController().navigate(FavoritesFragmentDirections.actionIdFavoritesFragmentToIdCartFragment())
         }*/
+        binding.btnBuy.setOnClickListener {
+            println("continuar compra")
+        }
     }
 
     private fun initUIState() {
@@ -119,17 +122,15 @@ class CartFragment : Fragment() {
         } else {
             binding.layoutCartEmpty.isVisible = false
             cartAdapter.updateList(state.products)
-            binding.tvTotalProducts.text = "Products(${state.})"
-            openModal()
+
+            binding.tvTotalProducts.text = "Products (${state.products.size})"
+
+            val (totalPrice, totalShipping) = cartAdapter.calculateTotalPriceShipping()
+            binding.tvTotalPrice.text = "$ $totalPrice"
+            binding.tvTotalShipment.text = "$ $totalShipping"
+            binding.tvTotalPriceShipping.text = "$ ${totalPrice + totalShipping}"
+
         }
-    }
-
-    private fun openModal() {
-        /*val quantity = 3
-        val totalPrice = 3
-        val dialog = ModalDialogFragment.newInstance(quantity, totalPrice)
-
-        dialog.show(requireFragmentManager(), "buy_dialog")*/
     }
 
     override fun onCreateView(
