@@ -14,4 +14,8 @@
         <item name="android:background">@drawable/bg_btn_global</item>
         <item name="android:height">45dp</item>
     </style>
+
+    <style name="progressBarStyle">
+        <item name="colorAccent">@color/blue</item> <!-- Whatever color you want-->
+    </style>
 </resources>

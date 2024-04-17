@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textSize="19sp"
             android:padding="10dp" />
 
         <View
@@ -35,7 +36,7 @@
             android:layout_width="55sp"
             android:layout_height="55sp"
             android:scaleType="fitXY"
-            android:src="@drawable/img_example_default" />
+            android:contentDescription="@string/iv_product_description" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +48,6 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hola"
                 android:textSize="17sp"
                 android:maxLines="1"
                 android:ellipsize="end" />
@@ -82,7 +82,6 @@
                     android:id="@+id/tvQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
 
@@ -91,7 +90,6 @@
                     android:id="@+id/tvDiscount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-26%"
                     android:textColor="@color/green"
                     android:layout_marginEnd="5dp"
                     app:layout_constraintBottom_toTopOf="@+id/tvPrice"
@@ -101,7 +99,6 @@
                     android:id="@+id/tvOldPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$ 120"
                     app:layout_constraintBottom_toTopOf="@+id/tvPrice"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -110,7 +107,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="19sp"
-                    android:text="$ 120"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 

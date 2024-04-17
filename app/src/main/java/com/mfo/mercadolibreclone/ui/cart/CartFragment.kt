@@ -106,17 +106,21 @@ class CartFragment : Fragment() {
     }
 
     private fun loadingState() {
-        //binding.pb.isVisible = true
+        binding.pb.isVisible = true
     }
 
     private fun errorState(error: String) {
-        //binding.pb.isVisible = false
+        binding.pb.isVisible = false
         val context = binding.root.context
         Toast.makeText(context, "Error: $error", Toast.LENGTH_SHORT).show()
+        if(error == "Unauthorized: invalid token") {
+            binding.constraintLayoutBottom.isVisible = false
+            binding.layoutCartEmpty.isVisible = true
+        }
     }
 
     private fun successSate(state: CartState.Success) {
-        //binding.pb.isVisible = false
+        binding.pb.isVisible = false
         if(state.products.isEmpty()) {
             binding.layoutCartEmpty.isVisible = true
         } else {

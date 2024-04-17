@@ -34,6 +34,12 @@
 
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:theme="@style/progressBarStyle" />
+
     <LinearLayout
         android:id="@+id/layoutCartEmpty"
         android:layout_width="match_parent"
@@ -83,11 +89,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_above="@+id/constraintLayoutBottom" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutBottom"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -102,10 +111,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+            <TextView
                     android:id="@+id/tvTotalProducts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/tv_products"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -157,7 +167,6 @@
                     android:id="@+id/tv_totalPriceShipping"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$1.809.995"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -181,5 +190,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
+
 
 </LinearLayout>

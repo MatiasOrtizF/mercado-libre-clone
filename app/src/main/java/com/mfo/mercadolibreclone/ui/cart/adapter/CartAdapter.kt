@@ -18,10 +18,12 @@ class CartAdapter(private var productsList: MutableList<CartResponse> = mutableL
         var totalPrice = 0.0
         var totalShipping = 0.0
         for (cart in productsList) {
-            totalPrice += cart.product.price
-            if(cart.product.shipment != null) {
-                totalShipping += cart.product.shipment
-            }
+
+            var discountPrice = cart.product.price * (cart.product.discountPercentage?:0.0) / 100
+            var newPrice = cart.product.price-discountPrice
+            totalPrice += newPrice
+
+            totalShipping += cart.product.shipment?:0.0
         }
         return Pair(totalPrice, totalShipping)
     }

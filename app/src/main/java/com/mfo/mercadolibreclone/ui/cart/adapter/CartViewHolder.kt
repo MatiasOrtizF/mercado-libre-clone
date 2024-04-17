@@ -1,9 +1,12 @@
 package com.mfo.mercadolibreclone.ui.cart.adapter
 
 import android.graphics.Paint
+import android.graphics.Typeface
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.data.network.response.CartResponse
 import com.mfo.mercadolibreclone.databinding.ItemCartBinding
 
@@ -21,7 +24,15 @@ class CartViewHolder(view: View): RecyclerView.ViewHolder(view) {
         binding.tvOldPrice.paintFlags = binding.tvOldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         val discountPrice = cart.product.price * (cart.product.discountPercentage?:0.0) / 100
         binding.tvPrice.text = "$ ${cart.product.price-discountPrice}"
-        binding.tvShipment.text = cart.product.shipment?.toString() ?: "free"
+        binding.tvShipment.text = if (cart.product.shipment != null && cart.product.shipment !=  0.0) {
+            "$ ${cart.product.shipment}"
+        } else {
+            val colorGreen = ContextCompat.getColor(context, R.color.green)
+            binding.tvShipment.setTextColor(colorGreen)
+            val textStyle = Typeface.create("sans-serif", Typeface.BOLD)
+            binding.tvShipment.typeface = textStyle
+            "free"
+        }
         //binding.tvAgeKm.text = favorite.product.description
 
         binding.parent.setOnClickListener { onItemSelected(cart) }
