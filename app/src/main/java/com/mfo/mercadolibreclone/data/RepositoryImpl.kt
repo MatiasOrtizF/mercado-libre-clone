@@ -157,6 +157,24 @@ class RepositoryImpl @Inject constructor(private val apiService: MeliCloneApiSer
         return null
     }
 
+    override suspend fun deleteProductInCart(authorization: String, id: Long): Boolean {
+        return runCatching {
+            apiService.deleteCart(authorization, id)
+        }.fold(
+            onSuccess = {
+                true
+            },
+            onFailure = { throwable ->
+                val errorMessage = when (throwable) {
+                    is HttpException -> throwable.response()?.errorBody()?.string()
+                    else -> null
+                } ?: "An error occurred: ${throwable.message}"
+                Log.i("mfo", "Error occurred: $errorMessage")
+                throw Exception(errorMessage)
+            }
+        )
+    }
+
     //user
     override suspend fun getUser(token: String): UserResponse? {
         runCatching { apiService.getUser(token)}

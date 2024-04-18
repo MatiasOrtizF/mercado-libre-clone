@@ -5,13 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.data.network.response.CartResponse
-import com.mfo.mercadolibreclone.data.network.response.FavoriteResponse
-import com.mfo.mercadolibreclone.ui.favorites.adapter.FavoriteViewHolder
 
-class CartAdapter(private var productsList: MutableList<CartResponse> = mutableListOf(), private val onItemSelected:(CartResponse) -> Unit): RecyclerView.Adapter<CartViewHolder>() {
+class CartAdapter(private var productsList: MutableList<CartResponse> = mutableListOf(), private val onItemSelected:(CartResponse) -> Unit, private val onCartDeleteButtonClicked:(Long, Int) -> Unit, private val onFavoriteButtonClicked:(Long) -> Unit): RecyclerView.Adapter<CartViewHolder>() {
     fun updateList(list: MutableList<CartResponse>) {
         productsList = list
         notifyDataSetChanged()
+    }
+
+    fun onDeleteItem(position: Int) {
+        productsList.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     fun calculateTotalPriceShipping(): Pair<Double, Double> {
@@ -19,8 +22,8 @@ class CartAdapter(private var productsList: MutableList<CartResponse> = mutableL
         var totalShipping = 0.0
         for (cart in productsList) {
 
-            var discountPrice = cart.product.price * (cart.product.discountPercentage?:0.0) / 100
-            var newPrice = cart.product.price-discountPrice
+            val discountPrice = cart.product.price * (cart.product.discountPercentage?:0.0) / 100
+            val newPrice = cart.product.price-discountPrice
             totalPrice += newPrice
 
             totalShipping += cart.product.shipment?:0.0
@@ -39,6 +42,6 @@ class CartAdapter(private var productsList: MutableList<CartResponse> = mutableL
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        holder.bind(productsList[position], onItemSelected)
+        holder.bind(productsList[position], onItemSelected, onCartDeleteButtonClicked, onFavoriteButtonClicked)
     }
 }

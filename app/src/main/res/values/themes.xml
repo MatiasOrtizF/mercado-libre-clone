@@ -3,6 +3,7 @@
     <style name="Base.Theme.MercadoLibreClone" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/yellow</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -18,4 +19,6 @@
     <style name="progressBarStyle">
         <item name="colorAccent">@color/blue</item> <!-- Whatever color you want-->
     </style>
+
+
 </resources>

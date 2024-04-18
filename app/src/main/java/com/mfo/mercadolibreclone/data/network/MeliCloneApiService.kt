@@ -55,6 +55,12 @@ interface MeliCloneApiService {
     @GET("cart")
     suspend fun getCart(@Header ("Authorization") authorization: String): List<CartResponse>
 
+    @DELETE("cart/{id}")
+    suspend fun deleteCart(
+        @Header ("Authorization") authorization: String,
+        @Path ("id") id: Long
+    ): Boolean
+
     //user
     @GET("user")
     suspend fun getUser(@Query ("token") token: String): UserResponse

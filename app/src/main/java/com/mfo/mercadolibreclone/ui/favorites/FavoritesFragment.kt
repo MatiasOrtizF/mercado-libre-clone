@@ -86,6 +86,7 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun deleteToFavorites(id: Long, position: Int) {
+        Toast.makeText(requireContext(), "¡listo! eliminaste el producto de favoritos", Toast.LENGTH_SHORT).show()
         val preferences = PreferenceHelper.defaultPrefs(requireContext())
         val token: String = preferences.getString("jwt", "").toString()
         lifecycleScope.launch {

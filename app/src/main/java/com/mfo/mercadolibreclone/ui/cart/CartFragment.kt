@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -14,15 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.databinding.FragmentCartBinding
-import com.mfo.mercadolibreclone.databinding.FragmentCategoryBinding
 import com.mfo.mercadolibreclone.ui.cart.adapter.CartAdapter
-import com.mfo.mercadolibreclone.ui.cart.modal.ModalDialogFragment
-import com.mfo.mercadolibreclone.ui.favorites.FavoriteState
-import com.mfo.mercadolibreclone.ui.favorites.FavoritesFragmentDirections
-import com.mfo.mercadolibreclone.ui.favorites.FavoritesViewModel
-import com.mfo.mercadolibreclone.ui.favorites.adapter.FavoriteAdapter
 import com.mfo.mercadolibreclone.utils.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -54,12 +46,6 @@ class CartFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             findNavController().navigate(CartFragmentDirections.actionIdCartFragmentToIdHomeFragment())
         }
-        /*binding.btnSearch.setOnClickListener {
-            findNavController().navigate(FavoritesFragmentDirections.actionIdFavoritesFragmentToIdSearchFragment())
-        }
-        binding.btnCart.setOnClickListener {
-            findNavController().navigate(FavoritesFragmentDirections.actionIdFavoritesFragmentToIdCartFragment())
-        }*/
         binding.btnBuy.setOnClickListener {
             println("continuar compra")
         }
@@ -82,11 +68,14 @@ class CartFragment : Fragment() {
     private fun initList() {
         cartAdapter = CartAdapter(
             onItemSelected = {
-                findNavController().navigate(FavoritesFragmentDirections.actionIdFavoritesFragmentToIdProductDetailFragment(it.product.id, it.product.subCategory))
+                findNavController().navigate(CartFragmentDirections.actionIdCartFragmentToIdProductDetailFragment(it.product.id, it.product.subCategory))
             },
-            /*onFavoriteDeleteButtonClicked = { id, position ->
-                deleteToFavorites(id, position)
-            }*/
+            onCartDeleteButtonClicked = { id, position ->
+                deleteToCart(id, position)
+            },
+            onFavoriteButtonClicked = { productId ->
+                addToFavorite(productId)
+            }
         )
         binding.rvCart.apply {
             layoutManager = LinearLayoutManager(context)
@@ -94,15 +83,31 @@ class CartFragment : Fragment() {
         }
     }
 
-    private fun deleteToFavorites(id: Long, position: Int) {
-        /*val preferences = PreferenceHelper.defaultPrefs(requireContext())
+    private fun deleteToCart(id: Long, position: Int) {
+        val preferences = PreferenceHelper.defaultPrefs(requireContext())
         val token: String = preferences.getString("jwt", "").toString()
         lifecycleScope.launch {
             val isDelete = cartViewModel.deleteProductInCart(token, id)
             if (isDelete) {
                 cartAdapter.onDeleteItem(position)
+
+                if (cartAdapter.itemCount == 0) {
+                    binding.layoutCartEmpty.isVisible = true
+                    binding.constraintLayoutBottom.isVisible = false
+                } else {
+                    updateDataBuy()
+                }
+
+                binding.pb.isVisible = false
             }
-        }*/
+        }
+    }
+
+    private fun addToFavorite(productId: Long) {
+        Toast.makeText(requireContext(), "¡listo! guardaste el producto en favoritos", Toast.LENGTH_SHORT).show()
+        val preferences = PreferenceHelper.defaultPrefs(requireContext())
+        val token: String = preferences.getString("jwt", "").toString()
+        cartViewModel.addProductInFavoriteUseCase(token, productId)
     }
 
     private fun loadingState() {
@@ -127,20 +132,23 @@ class CartFragment : Fragment() {
             binding.layoutCartEmpty.isVisible = false
             cartAdapter.updateList(state.products)
 
-            binding.tvTotalProducts.text = "Products (${state.products.size})"
-
-            val (totalPrice, totalShipping) = cartAdapter.calculateTotalPriceShipping()
-            binding.tvTotalPrice.text = "$ $totalPrice"
-            binding.tvTotalShipment.text = "$ $totalShipping"
-            binding.tvTotalPriceShipping.text = "$ ${totalPrice + totalShipping}"
-
+            updateDataBuy()
         }
+    }
+
+    private fun updateDataBuy() {
+        binding.tvTotalProducts.text = "Products (${cartAdapter.itemCount})"
+
+        val (totalPrice, totalShipping) = cartAdapter.calculateTotalPriceShipping()
+        binding.tvTotalPrice.text = "$ $totalPrice"
+        binding.tvTotalShipment.text = "$ $totalShipping"
+        binding.tvTotalPriceShipping.text = "$ ${totalPrice + totalShipping}"
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         return binding.root
     }

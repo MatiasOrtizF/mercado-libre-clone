@@ -25,6 +25,7 @@ interface Repository {
 
     //cart
     suspend fun getAllProductsInCart(authorization: String): List<CartResponse>?
+    suspend fun deleteProductInCart(authorization: String, id: Long):Boolean
 
     //user
     suspend fun getUser(token: String): UserResponse?

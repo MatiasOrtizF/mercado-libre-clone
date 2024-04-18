@@ -13,7 +13,7 @@ import com.mfo.mercadolibreclone.databinding.ItemCartBinding
 class CartViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private val binding = ItemCartBinding.bind(view)
 
-    fun bind(cart: CartResponse, onItemSelected: (CartResponse) -> Unit) {
+    fun bind(cart: CartResponse, onItemSelected: (CartResponse) -> Unit, onCartDeleteButtonClicked: (Long, Int) -> Unit, onFavoriteButtonClicked: (Long) -> Unit) {
         val context = binding.tvTitle.context
         binding.tvUserName.text = cart.product.user.name // change to username
         Glide.with(context).load(cart.product.image).into(binding.ivProduct)
@@ -34,6 +34,9 @@ class CartViewHolder(view: View): RecyclerView.ViewHolder(view) {
             "free"
         }
         //binding.tvAgeKm.text = favorite.product.description
+
+        binding.btnDeleteCart.setOnClickListener { onCartDeleteButtonClicked(cart.id, bindingAdapterPosition) }
+        binding.btnSave.setOnClickListener { onFavoriteButtonClicked(cart.product.id) }
 
         binding.parent.setOnClickListener { onItemSelected(cart) }
     }
