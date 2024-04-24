@@ -6,19 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.databinding.FragmentProductDetailBinding
-import com.mfo.mercadolibreclone.ui.category.CategoryFragmentDirections
-import com.mfo.mercadolibreclone.ui.category.adapter.CategoryAdapter
+import com.mfo.mercadolibreclone.utils.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -36,14 +30,22 @@ class ProductDetailFragment : Fragment() {
         val productId: Long = args.productId
         val categoryName: String = args.subCategoryName
         initUI()
-        print("hola")
         productDetailViewModel.getProduct(categoryName, productId)
+        val preferences = PreferenceHelper.defaultPrefs(requireContext())
+        val token: String = preferences.getString("jwt", "").toString()
+        lifecycleScope.launch {
+            val isDelete = productDetailViewModel.getProductInFavorite(token, productId)
+            if (isDelete) {
+                binding.btnAddFavorite.setImageResource(R.drawable.ic_favorited)
+            }
+        }
     }
 
     private fun initUI() {
         initUIState()
         initListeners()
     }
+
     private fun initUIState() {
         lifecycleScope.launch {
             productDetailViewModel.state.collect {
@@ -86,7 +88,7 @@ class ProductDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentProductDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

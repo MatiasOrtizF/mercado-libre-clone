@@ -2,7 +2,9 @@ package com.mfo.mercadolibreclone.ui.globals.ProductDetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mfo.mercadolibreclone.domain.usecase.favorites.GetProductInFavoritesUseCase
 import com.mfo.mercadolibreclone.domain.usecase.favorites.GetProductUseCase
+import com.mfo.mercadolibreclone.ui.favorites.FavoriteState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +14,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductDetailViewModel @Inject constructor(private val getProductUseCase: GetProductUseCase): ViewModel() {
+class ProductDetailViewModel @Inject constructor(private val getProductUseCase: GetProductUseCase, private val getProductInFavoritesUseCase: GetProductInFavoritesUseCase): ViewModel() {
 
     private var _state = MutableStateFlow<ProductDetailState>(ProductDetailState.Loading)
     val state: StateFlow<ProductDetailState> = _state
@@ -27,6 +29,18 @@ class ProductDetailViewModel @Inject constructor(private val getProductUseCase: 
             } else {
                 _state.value = ProductDetailState.Error("Error occurred, Please try again later.")
             }
+        }
+    }
+
+    suspend fun getProductInFavorite(authorization: String, productId: Long): Boolean {
+        return try {
+            withContext(Dispatchers.IO) {
+                getProductInFavoritesUseCase(authorization, productId)
+            }
+        } catch (e: Exception) {
+            val errorMessage: String = e.message.toString()
+            _state.value = ProductDetailState.Error(errorMessage)
+            false
         }
     }
 }

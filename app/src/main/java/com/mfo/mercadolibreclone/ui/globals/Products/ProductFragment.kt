@@ -16,7 +16,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mfo.mercadolibreclone.databinding.FragmentProductBinding
 import com.mfo.mercadolibreclone.ui.globals.Products.adapter.ProductAdapter
-import com.mfo.mercadolibreclone.utils.PreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -67,9 +66,6 @@ class ProductFragment : Fragment() {
             onItemSelected = {
                 findNavController().navigate(ProductFragmentDirections.actionIdProductFragmentToProductDetailFragment(it.id, it.subCategory))
             },
-            onFavoriteButtonClicked = { productId ->
-                addToFavorites(productId)
-            }
         )
         binding.rvProduct.apply {
             layoutManager = LinearLayoutManager(context)
@@ -83,12 +79,6 @@ class ProductFragment : Fragment() {
     ): View? {
         _binding = FragmentProductBinding.inflate(layoutInflater, container, false)
         return binding.root
-    }
-
-    private fun addToFavorites(productId: Long) {
-        val preferences = PreferenceHelper.defaultPrefs(requireContext())
-        val token: String = preferences.getString("jwt", "").toString()
-        productViewModel.addProductInFavoriteUseCase(token, productId)
     }
 
     private fun loadingState() {

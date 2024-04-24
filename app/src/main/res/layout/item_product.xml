@@ -5,38 +5,19 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@color/gray">
-
-        <ImageView
-            android:id="@+id/ivProduct"
-            android:layout_width="150sp"
-            android:layout_height="150sp"
-            android:paddingVertical="10dp"
-            android:src="@drawable/ic_shopping"/>
-
-        <ImageButton
-            android:id="@+id/btnAddFavorite"
-            android:layout_width="35sp"
-            android:layout_height="35sp"
-            android:layout_alignTop="@id/ivProduct"
-            android:layout_alignEnd="@id/ivProduct"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:padding="7dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_favorites"
-            android:background="@drawable/bg_circle_img"/>
-
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/ivProduct"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:paddingVertical="10dp"
+        android:background="@color/gray_light"
+        android:contentDescription="@string/iv_product_description" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginLeft="10dp">
+        android:layout_marginStart="10dp">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -54,7 +35,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="19sp"
-            android:layout_marginVertical="10dp"/>
+            android:layout_marginVertical="10dp" />
 
         <TextView
             android:id="@+id/tvDescription"
@@ -63,8 +44,7 @@
             android:minLines="3"
             android:maxLines="3"
             android:ellipsize="end"
-            android:textColor="@color/gray_dark"
-            android:text="Se entrega transferido, Mantenimiento al día, Excelente estado general"/>
+            android:textColor="@color/gray_dark" />
 
     </LinearLayout>
 

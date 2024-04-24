@@ -66,9 +66,6 @@ class SearchDetailFragment : Fragment() {
             onItemSelected = {
                 findNavController().navigate(SearchDetailFragmentDirections.actionSearchDetailFragmentToIdProductDetailFragment(it.id, it.subCategory))
             },
-            onFavoriteButtonClicked = { productId ->
-                addToFavorites(productId)
-            }
         )
         binding.rvSearchDetail.apply {
             layoutManager = LinearLayoutManager(context)
@@ -79,15 +76,9 @@ class SearchDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSearchDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
-    }
-
-    private fun addToFavorites(productId: Long) {
-        val preferences = PreferenceHelper.defaultPrefs(requireContext())
-        val token: String = preferences.getString("jwt", "").toString()
-        searchDetailViewModel.addProductInFavoriteUseCase(token, productId)
     }
 
     private fun loadingState() {

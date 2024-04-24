@@ -39,15 +39,4 @@ class SearchDetailViewModel @Inject constructor(private val getProductByProductN
             }
         }
     }
-
-    fun addProductInFavoriteUseCase(authorization: String, productId: Long) {
-        viewModelScope.launch {
-            try {
-                withContext(Dispatchers.IO) { postProductInFavoriteUseCase(authorization, productId) }
-            } catch (e: Exception) {
-                val errorMessage: String = e.message.toString()
-                _state.value = SearchDetailState.Error(errorMessage)
-            }
-        }
-    }
 }

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.domain.model.Product
 
-class SearchDetailAdapter (private var productsList: MutableList<Product> = mutableListOf(), private val onItemSelected:(Product) -> Unit, private val onFavoriteButtonClicked:(Long) -> Unit): RecyclerView.Adapter<SearchDetailViewHolder>() {
+class SearchDetailAdapter (private var productsList: MutableList<Product> = mutableListOf(), private val onItemSelected:(Product) -> Unit): RecyclerView.Adapter<SearchDetailViewHolder>() {
     fun updateList(list: MutableList<Product>) {
         productsList = list
         notifyDataSetChanged()
@@ -23,6 +23,6 @@ class SearchDetailAdapter (private var productsList: MutableList<Product> = muta
     }
 
     override fun onBindViewHolder(holder: SearchDetailViewHolder, position: Int) {
-        holder.bind(productsList[position], onItemSelected, onFavoriteButtonClicked)
+        holder.bind(productsList[position], onItemSelected)
     }
 }

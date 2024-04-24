@@ -22,6 +22,7 @@ interface Repository {
     suspend fun getAllProductsInFavorites(authorization: String): List<FavoriteResponse>?
     suspend fun addProductInFavorite(authorization: String, productId: Long): FavoriteResponse?
     suspend fun deleteProductInFavorite(authorization: String, id: Long): Boolean
+    suspend fun getProductInFavorite(authorization: String, productId: Long): Boolean
 
     //cart
     suspend fun getAllProductsInCart(authorization: String): List<CartResponse>?

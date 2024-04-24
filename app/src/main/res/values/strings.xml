@@ -125,6 +125,7 @@
 
     <!-- Product Detail -->
     <string name="iv_product_description">Image product</string>
+    <string name="iv_favorite_description"> Icon favorite </string>
     <string name="btn_question">Question</string>
     <string name="tv_features">Product features</string>
     <string name="ic_door_description">Icon door</string>

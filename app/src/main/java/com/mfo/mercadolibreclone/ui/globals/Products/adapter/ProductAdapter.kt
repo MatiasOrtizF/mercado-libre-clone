@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mfo.mercadolibreclone.R
 import com.mfo.mercadolibreclone.domain.model.Product
 
-class ProductAdapter(private var productsList: List<Product> = emptyList(), private val onItemSelected:(Product) -> Unit, private val onFavoriteButtonClicked:(Long) -> Unit): RecyclerView.Adapter<ProductViewHolder>() {
+class ProductAdapter(private var productsList: List<Product> = emptyList(), private val onItemSelected:(Product) -> Unit): RecyclerView.Adapter<ProductViewHolder>() {
     fun updateList(list: List<Product>) {
         productsList = list
         notifyDataSetChanged()
@@ -23,6 +23,6 @@ class ProductAdapter(private var productsList: List<Product> = emptyList(), priv
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(productsList[position], onItemSelected, onFavoriteButtonClicked)
+        holder.bind(productsList[position], onItemSelected)
     }
 }

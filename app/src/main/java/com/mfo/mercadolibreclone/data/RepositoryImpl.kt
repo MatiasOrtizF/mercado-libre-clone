@@ -137,6 +137,24 @@ class RepositoryImpl @Inject constructor(private val apiService: MeliCloneApiSer
         )
     }
 
+    override suspend fun getProductInFavorite(authorization: String, productId: Long): Boolean {
+        return runCatching {
+            apiService.getFavorite(authorization, productId)
+        }.fold(
+            onSuccess = {
+                it
+            },
+            onFailure = { throwable ->
+                val errorMessage = when (throwable) {
+                    is HttpException -> throwable.response()?.errorBody()?.string()
+                    else -> null
+                } ?: "An error occurred: ${throwable.message}"
+                Log.i("mfo", "Error occurred: $errorMessage")
+                throw Exception(errorMessage)
+            }
+        )
+    }
+
     //cart
     override suspend fun getAllProductsInCart(authorization: String): List<CartResponse>? {
         runCatching {

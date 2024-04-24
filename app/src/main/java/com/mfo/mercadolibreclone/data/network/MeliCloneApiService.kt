@@ -51,6 +51,12 @@ interface MeliCloneApiService {
         @Path ("id") favoriteProductId: Long
     ): Boolean // change this
 
+    @GET("favorite/{productId}")
+    suspend fun getFavorite(
+        @Header ("Authorization") authorization: String,
+        @Path ("productId") productId: Long
+    ): Boolean
+
     //cart
     @GET("cart")
     suspend fun getCart(@Header ("Authorization") authorization: String): List<CartResponse>
