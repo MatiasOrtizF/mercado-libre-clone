@@ -73,7 +73,6 @@ class MainActivity : AppCompatActivity(){
 
         val token = preferences.getString("jwt", "").toString()
         mainViewModel.getUser(token)
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
